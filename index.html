@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>520快乐！我们的专属纪念空间 ❤️</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { rosepink: '#f472b6', lightpink: '#fce7f3', milkywhite: '#fafafa', darkgrey: '#374151', lightgrey: '#6b7280' } } }
+        }
+    </script>
+</head>
+<body class="bg-milkywhite text-darkgrey overflow-x-hidden relative">
+    <canvas id="heartCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-40"></canvas>
+    
+    <div id="musicControl" class="fixed top-5 right-5 z-50 glass-effect p-3 rounded-full shadow-md cursor-pointer border border-pink-200 transition-transform duration-300 hover:scale-110">
+        <svg id="musicIcon" class="w-6 h-6 text-rosepink" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="animation: spin 6s linear infinite;">
+            <style> @keyframes spin { 100% { transform: rotate(360deg); } } </style>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+        </svg>
+        <audio id="bgmAudio" loop><source src="/static/assets/audio/bgm.mp3" type="audio/mpeg"></audio>
+    </div>
+    
+    
+    <section id="section-cover" class="relative w-screen h-screen flex flex-col justify-center items-center text-center overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-1000" style="background-image: url('/static/assets/cover/bg.jpg'); filter: blur(4px) brightness(0.75); transform: scale(1.05);"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
+    <div class="relative z-10 px-4 text-white">
+        <h1 class="text-4xl md:text-6xl font-semibold transition-all duration-1000 ease-out" id="coverTitle">520 快乐，马狗艳 ❤️</h1>
+        <p class="text-lg md:text-xl mt-6 font-light max-w-xl mx-auto min-h-[2rem] text-pink-100 cursor-blink" id="typewriterText" data-text="听，那是属于我们的旋律。轻轻滑动，开启我们的故事..."></p>
+        <div class="mt-10 bg-white/10 backdrop-blur-sm inline-block px-6 py-3 rounded-full border border-white/20">
+            <span class="text-sm uppercase tracking-wider text-pink-200">我们已经携手走过</span>
+            <div class="text-3xl font-bold text-white mt-1">574 <span class="text-lg font-light text-pink-200">天</span></div>
+        </div>
+    </div>
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 flex flex-col items-center text-white/70 animate-bounce">
+        <span class="text-xs tracking-widest mb-1">轻轻滑动，开启故事</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+    </div>
+</section>
+    <section id="section-timeline" class="py-24 bg-fafafa px-4">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-medium text-center text-darkgrey mb-2">时光轴上的独家记忆</h2>
+        <div class="w-12 h-1 bg-rosepink mx-auto mb-16 rounded-full"></div>
+        <div class="relative wrap overflow-hidden p-4 h-full">
+            <div class="border-2-2 absolute border-rosepink/30 h-full border" style="left: 50%"></div>
+            
+            <div class="mb-12 flex justify-between items-center w-full timeline-node transition-all duration-700 ease-out flex-row-reverse">
+                <div class="order-1 w-5/12"></div>
+                <div class="z-20 flex items-center order-1 bg-rosepink shadow-xl w-4 h-4 rounded-full border-4 border-white timeline-dot"></div>
+                <div class="order-1 bg-white rounded-lg w-5/12 shadow-sm border border-pink-100 overflow-hidden transform transition-all duration-300 hover:scale-[1.02]">
+                    <img src="/static/assets/timeline/1.jpg" alt="纪念日图片" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <span class="text-rosepink font-medium text-sm tracking-wide">2024.05.20</span>
+                        <h3 class="mb-2 font-semibold text-darkgrey text-xl mt-1">初次相遇的瞬间</h3>
+                        <p class="text-lightgrey text-sm leading-relaxed">第一次拍照，那天阳光正好，你笑起来的样子，真可爱，</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-12 flex justify-between items-center w-full timeline-node transition-all duration-700 ease-out ">
+                <div class="order-1 w-5/12"></div>
+                <div class="z-20 flex items-center order-1 bg-rosepink shadow-xl w-4 h-4 rounded-full border-4 border-white timeline-dot"></div>
+                <div class="order-1 bg-white rounded-lg w-5/12 shadow-sm border border-pink-100 overflow-hidden transform transition-all duration-300 hover:scale-[1.02]">
+                    <img src="/static/assets/timeline/2.jpg" alt="纪念日图片" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <span class="text-rosepink font-medium text-sm tracking-wide">2024.10.01</span>
+                        <h3 class="mb-2 font-semibold text-darkgrey text-xl mt-1">第一次打球</h3>
+                        <p class="text-lightgrey text-sm leading-relaxed">哈哈，当时你好菜，现在天天暴打我，呜呜呜</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-12 flex justify-between items-center w-full timeline-node transition-all duration-700 ease-out flex-row-reverse">
+                <div class="order-1 w-5/12"></div>
+                <div class="z-20 flex items-center order-1 bg-rosepink shadow-xl w-4 h-4 rounded-full border-4 border-white timeline-dot"></div>
+                <div class="order-1 bg-white rounded-lg w-5/12 shadow-sm border border-pink-100 overflow-hidden transform transition-all duration-300 hover:scale-[1.02]">
+                    <img src="/static/assets/timeline/3.jpg" alt="纪念日图片" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <span class="text-rosepink font-medium text-sm tracking-wide">2025.01.01</span>
+                        <h3 class="mb-2 font-semibold text-darkgrey text-xl mt-1">第一次出去旅游</h3>
+                        <p class="text-lightgrey text-sm leading-relaxed">带你尝遍运城美食，你长了七斤肉。</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+    <section id="section-gallery" class="py-24 bg-white px-4">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-medium text-center text-darkgrey mb-2">与你有关的每一刻</h2>
+        <div class="w-12 h-1 bg-rosepink mx-auto mb-16 rounded-full"></div>
+        <div class="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p1.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p2.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p3.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p4.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p5.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p6.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p7.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p8.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p9.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p10.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p11.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p12.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p13.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p14.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p15.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p16.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p17.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p18.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p19.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p20.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p21.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p22.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p23.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p24.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p25.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p26.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p27.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p28.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p29.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p30.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p31.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p32.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p33.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p34.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p35.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p36.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p37.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p38.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p39.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p40.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p41.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p42.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p43.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p44.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p45.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p46.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p47.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p48.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p49.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p50.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p51.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p52.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p53.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p54.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p55.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p56.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p57.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p58.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p59.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p60.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p61.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p62.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p63.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+            <div class="break-inside-avoid overflow-hidden rounded-lg shadow-sm border border-gray-100 group cursor-zoom-in">
+                <img src="/static/assets/gallery/p64.jpg" alt="日常瞬间" class="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105 gallery-img">
+            </div>
+            
+        </div>
+    </div>
+    <div id="lightbox" class="fixed inset-0 bg-black/90 z-50 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
+        <button id="lightboxClose" class="absolute top-5 right-5 text-white/70 hover:text-white text-3xl">&times;</button>
+        <img id="lightboxImg" src="" alt="大图" class="max-w-full max-h-[90vh] rounded-md shadow-2xl">
+    </div>
+</section>
+    <section id="section-letter" class="py-24 bg-[#fdf6f0] px-4 border-t border-b border-orange-100/50">
+    <div class="max-w-2xl mx-auto bg-white rounded-xl p-8 md:p-14 letter-shadow relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-2 h-full bg-rosepink/10"></div>
+        <h2 class="text-2xl md:text-3xl font-medium text-center text-[#5c4033] mb-10">致我最心爱的你</h2>
+        <div class="space-y-6 text-[#6c5c53] text-base md:text-lg leading-relaxed tracking-wide font-serif">
+            
+            <p class="letter-row transition-opacity duration-1000">狗艳</p>
+            
+            <p class="letter-row transition-opacity duration-1000">不知不觉，我们已经一起走过了这么多个闪闪发光的日夜。在那些平凡琐碎的时光里，因为有了你的陪伴，每一秒都变得富有意义。</p>
+            
+            <p class="letter-row transition-opacity duration-1000">我喜欢看着你吃美食时满足的小表情，喜欢你在遇到小困难时捏着拳头的不服输，也贪恋你靠在我肩膀上时的那份绝对信任。</p>
+            
+            <p class="letter-row transition-opacity duration-1000">有人说，世界上最美好的事情莫过于‘遇见’。而我觉得，最奢侈的是‘相守’。未来的路很长，或许会有风雨，但我承诺：我的手永远不会放开。</p>
+            
+            <p class="letter-row transition-opacity duration-1000">我们一路上遇到过许多挫折，遇到过许多困难,我们一路走过来不容易，我希望可以接着和你一起走下去永远永远</p>
+            
+        </div>
+        <div class="mt-12 flex flex-col items-end text-right text-[#5c4033]">
+            <span class="font-medium cursor-pointer select-none active:scale-95 transition-transform" id="secretTrigger">永远爱你的大笨蛋 ✍️</span>
+            <span class="text-sm text-lightgrey mt-1">2026年5月20日</span>
+        </div>
+    </div>
+    <div id="eggModal" class="fixed inset-0 bg-black/70 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl p-6 max-w-md w-full shadow-2xl text-center transform scale-95 transition-transform duration-300">
+            <h3 class="text-lg font-semibold text-rosepink mb-4">🎉 隐藏恋爱碎片被解锁！</h3>
+            <img src="/static/assets/extra/egg.jpg" alt="彩蛋照片" class="w-full h-64 object-cover rounded-lg mb-4">
+            <p class="text-darkgrey text-sm leading-relaxed mb-6">✨ 被你发现了隐藏盲盒！这是我最喜欢的你的样子，傻乎乎的超级可爱，以后也要一直这样无忧无虑呀！</p>
+            <button id="eggClose" class="bg-rosepink text-white px-6 py-2 rounded-full text-sm hover:bg-pink-500">收下惊喜</button>
+        </div>
+    </div>
+</section>
+    <section id="section-footer" class="py-32 bg-white flex flex-col justify-center items-center text-center px-4">
+    <div class="space-y-4">
+        <p class="text-xl md:text-2xl font-light text-lightgrey tracking-wider">未来很长，我只想和你慢慢走</p>
+        <h2 class="text-3xl md:text-4xl text-rosepink font-bold">❤️ 我爱你，陪伴不止 520 ❤️</h2>
+        <div class="text-xs text-lightgrey pt-8 tracking-widest uppercase">制作于我们在一起的第 <span class="font-semibold text-rosepink">574</span> 天</div>
+    </div>
+</section>
+
+    <script>
+        window.BGM_CONFIG = { initialVolume: 0.25, timelineVolume: 0.3, letterVolume: 0.35, fadeDuration: 2000 };
+    </script>
+    <script src="/static/js/effects.js"></script>
+</body>
+</html>
